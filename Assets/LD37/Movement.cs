@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.Assertions;
 
 public class Movement : MonoBehaviour {
 
-    private const float movementForce = 5f;
+    private const float movementForce = 5f / 2;
     private const float stepForce = 2.5f;
-    private const float jumpForce = 3f;
-    private Vector2 velocity;
+    private const float jumpForce = 3f / 2;
 
     private float timeSinceJumpRequest = 0;
     private float timeSinceJump = 0;
@@ -47,10 +44,10 @@ public class Movement : MonoBehaviour {
     }
 
     void OnCollisionStay2D(Collision2D collision) {
-        Debug.LogFormat("Collided with {0}, velocity {1}", collision.gameObject, collision.relativeVelocity);
+        //Debug.LogFormat("Collided with {0}, velocity {1}", collision.gameObject, collision.relativeVelocity);
         ContactPoint2D[] contacts = collision.contacts;
         for(int i = 0; i < contacts.Length; ++i) {
-            Debug.LogFormat("Contact {0} normal {1}", i, contacts[i].normal);
+            //Debug.LogFormat("Contact {0} normal {1}", i, contacts[i].normal);
             if(contacts[i].normal.y > 0) {
                 grounded = true;
                 return;
