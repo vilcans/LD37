@@ -14,13 +14,15 @@
 
 #Unity3D Generated File On Crash Reports
 sysinfo.txt
- 
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 [Ee]xported[Oo]bj/
-**/*.sln*
- 
+*.sln
+*.CSharp.csproj
+.vs/
+
 # ============ #
 # OS generated #
 # ============ #
