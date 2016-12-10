@@ -2,6 +2,8 @@
 
 public class Movement : MonoBehaviour {
 
+    private Rigidbody2D body;
+
     private const float movementForce = 5f / 2;
     private const float stepForce = 2.5f;
     private const float jumpForce = 3f / 2;
@@ -10,6 +12,15 @@ public class Movement : MonoBehaviour {
     private float timeSinceJump = 0;
     private float timeSinceGround;
     private bool grounded;
+
+    private float wantedRotation;
+    private float rotationVelocity;
+    private const float rotationSmoothTime = .1f;
+
+
+    void Awake() {
+        body = GetComponent<Rigidbody2D>();
+    }
 
     void FixedUpdate() {
         if(grounded) {
@@ -39,8 +50,13 @@ public class Movement : MonoBehaviour {
         else {
             timeSinceJump += Time.deltaTime;
         }
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(accX, accY));
+        body.AddForce(new Vector2(accX, accY));
         grounded = false;
+
+        float velocityX = body.velocity.x;
+        if(Mathf.Abs(velocityX) > .04f) {
+            wantedRotation = velocityX > 0 ? 0 : -180;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision) {
@@ -53,5 +69,12 @@ public class Movement : MonoBehaviour {
                 return;
             }
         }
+    }
+
+    void Update() {
+        Vector3 currentRotation = transform.localEulerAngles;
+        //Debug.LogFormat("currentRotation={0}", currentRotation);
+        currentRotation.y = Mathf.SmoothDampAngle(currentRotation.y, wantedRotation, ref rotationVelocity, rotationSmoothTime);
+        transform.localEulerAngles = currentRotation;
     }
 }
