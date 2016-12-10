@@ -3,6 +3,7 @@
 public class Movement : MonoBehaviour {
 
     private Rigidbody2D body;
+    private Vector3 startPosition;
 
     private const float movementForce = 5f / 2;
     private const float stepForce = 2.5f;
@@ -17,8 +18,10 @@ public class Movement : MonoBehaviour {
     private float rotationVelocity;
     private const float rotationSmoothTime = .1f;
 
+    private float liftVelocity;
 
     void Awake() {
+        startPosition = transform.position;
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -76,5 +79,9 @@ public class Movement : MonoBehaviour {
         //Debug.LogFormat("currentRotation={0}", currentRotation);
         currentRotation.y = Mathf.SmoothDampAngle(currentRotation.y, wantedRotation, ref rotationVelocity, rotationSmoothTime);
         transform.localEulerAngles = currentRotation;
+
+        Vector3 newPosition = transform.position;
+        newPosition.z = Mathf.SmoothDamp(newPosition.z, startPosition.z - Mathf.Clamp(body.velocity.y, 0, 1) * .2f, ref liftVelocity, .2f);
+        transform.position = newPosition;
     }
 }
