@@ -4,7 +4,9 @@ public class Movement : MonoBehaviour {
 
     public AudioSource audioSource;
 
-    private Rigidbody2D body;
+    private Transform visibleBody;
+
+    private new Rigidbody2D rigidbody;
     private Vector3 startPosition;
 
     private const float movementForce = 5f / 2;
@@ -20,11 +22,13 @@ public class Movement : MonoBehaviour {
     private float rotationVelocity;
     private const float rotationSmoothTime = .1f;
 
+    private const float offsetFromWall = -.2f;
     private float liftVelocity;
 
     void Awake() {
         startPosition = transform.position;
-        body = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        visibleBody = transform.Find("VisibleBody");
     }
 
     void FixedUpdate() {
@@ -55,10 +59,10 @@ public class Movement : MonoBehaviour {
         else {
             timeSinceJump += Time.deltaTime;
         }
-        body.AddForce(new Vector2(accX, accY));
+        rigidbody.AddForce(new Vector2(accX, accY));
         grounded = false;
 
-        float velocityX = body.velocity.x;
+        float velocityX = rigidbody.velocity.x;
         if(Mathf.Abs(velocityX) > .04f) {
             wantedRotation = velocityX > 0 ? 0 : -180;
         }
@@ -77,7 +81,7 @@ public class Movement : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        Debug.Log("hit " + collider);
+        //Debug.Log("hit " + collider);
         SoundTrigger trigger = collider.GetComponent<SoundTrigger>();
         if(trigger == null || trigger.played) {
             return;
@@ -92,13 +96,13 @@ public class Movement : MonoBehaviour {
     }
 
     void Update() {
-        Vector3 currentRotation = transform.localEulerAngles;
+        Vector3 currentRotation = visibleBody.localEulerAngles;
         //Debug.LogFormat("currentRotation={0}", currentRotation);
         currentRotation.y = Mathf.SmoothDampAngle(currentRotation.y, wantedRotation, ref rotationVelocity, rotationSmoothTime);
-        transform.localEulerAngles = currentRotation;
+        visibleBody.localEulerAngles = currentRotation;
 
-        Vector3 newPosition = transform.position;
-        newPosition.z = Mathf.SmoothDamp(newPosition.z, startPosition.z - Mathf.Clamp(body.velocity.y, 0, 1) * .2f, ref liftVelocity, .2f);
-        transform.position = newPosition;
+        Vector3 newPosition = visibleBody.localPosition;
+        newPosition.z = Mathf.SmoothDamp(newPosition.z, offsetFromWall - Mathf.Clamp(rigidbody.velocity.y, 0, 1) * .2f, ref liftVelocity, .2f);
+        visibleBody.localPosition = newPosition;
     }
 }
