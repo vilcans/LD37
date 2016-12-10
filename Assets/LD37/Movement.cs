@@ -2,6 +2,8 @@
 
 public class Movement : MonoBehaviour {
 
+    public AudioSource audioSource;
+
     private Rigidbody2D body;
     private Vector3 startPosition;
 
@@ -72,6 +74,21 @@ public class Movement : MonoBehaviour {
                 return;
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        Debug.Log("hit " + collider);
+        SoundTrigger trigger = collider.GetComponent<SoundTrigger>();
+        if(trigger == null || trigger.played) {
+            return;
+        }
+        trigger.played = true;
+        AudioClip clip = trigger.clip;
+        if(clip == null) {
+            Debug.LogFormat("No audio clip set on {0}", trigger);
+            return;
+        }
+        audioSource.PlayOneShot(clip);
     }
 
     void Update() {
