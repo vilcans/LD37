@@ -3,6 +3,8 @@
 public class FollowAvatar : MonoBehaviour {
 
     public Transform following;
+    public bool follow = true;
+
     private const float smoothTime = 1f;
 
     private Vector3 delta;
@@ -15,7 +17,14 @@ public class FollowAvatar : MonoBehaviour {
     }
 
     void Update() {
-        Vector3 wantedPosition = following.position - delta;
+        Vector3 wantedPosition;
+
+        if(follow) {
+            wantedPosition = following.position - delta;
+        }
+        else {
+            wantedPosition = myTransform.position;
+        }
         //Vector3 newPosition = Vector3.MoveTowards(myTransform.position, wantedPosition, moveSpeed * Time.unscaledDeltaTime);
         Vector3 newPosition = Vector3.SmoothDamp(myTransform.position, wantedPosition, ref currentVelocity, smoothTime);
         myTransform.position = newPosition;
