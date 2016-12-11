@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour {
 
     private bool dead = false;
     private float deadTime = 0;
+    private float fallTime;
 
     void Awake() {
         startPosition = transform.position;
@@ -62,6 +63,10 @@ public class Movement : MonoBehaviour {
         float accY = 0;
         if(grounded) {
             accY += Mathf.Abs(accX) * stepForce;
+            fallTime = 0;
+        }
+        else if(rigidbody.velocity.y < 0) {
+            fallTime += Time.deltaTime;
         }
 
         if(timeSinceJumpRequest < .20f && timeSinceGround < .04f && timeSinceJump >= .2f) {
@@ -72,11 +77,16 @@ public class Movement : MonoBehaviour {
             timeSinceJump += Time.deltaTime;
         }
         rigidbody.AddForce(new Vector2(accX, accY));
+
         grounded = false;
 
         float velocityX = rigidbody.velocity.x;
         if(Mathf.Abs(accX) > .02f) {
             wantedRotation = accX > 0 ? 0 : -180;
+        }
+
+        if(fallTime > 2) {
+            Kill();
         }
     }
 
@@ -149,6 +159,7 @@ public class Movement : MonoBehaviour {
         dead = true;
         deadTime = 0;
         visibleBody.transform.SetParent(null);
+        rigidbody.isKinematic = true;
         audioSource.Stop();
     }
 }
