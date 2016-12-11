@@ -66,14 +66,6 @@ public class Movement : MonoBehaviour {
         if(Mathf.Abs(accX) > .02f) {
             wantedRotation = accX > 0 ? 0 : -180;
         }
-
-        // Remove collisions between clouds and player if moving up
-        if(rigidbody.velocity.y > 0) {
-            Physics2D.SetLayerCollisionMask(8, Physics2D.GetLayerCollisionMask(8) & ~(1 << 9));
-        }
-        else {
-            Physics2D.SetLayerCollisionMask(8, Physics2D.GetLayerCollisionMask(8) | (1 << 9));
-        }
     }
 
     void OnCollisionStay2D(Collision2D collision) {
