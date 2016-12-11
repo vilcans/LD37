@@ -20,11 +20,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012816008098}
   - 212: {fileID: 212000012996306226}
-  - 68: {fileID: 68000010782076264}
-  - 251: {fileID: 251000010280650344}
+  - 61: {fileID: 61000010611347746}
   m_Layer: 8
-  m_Name: ThreeThin1
-  m_TagString: Untagged
+  m_Name: Spikes3
+  m_TagString: Killer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,14 +35,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012354331450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.068, y: 21.763, z: 0}
+  m_LocalPosition: {x: 4.943, y: 17.966, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!68 &68000010782076264
-EdgeCollider2D:
+--- !u!61 &61000010611347746
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -52,13 +51,10 @@ EdgeCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-  - {x: -0.6046374, y: 0.016170502}
-  - {x: -0.19195151, y: 0.056663513}
-  - {x: 0.32293546, y: 0.043100357}
-  - {x: 0.62943554, y: 0.058044434}
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.0046670437, y: 0.00233078}
+  serializedVersion: 2
+  m_Size: {x: 0.57299733, y: 0.45666233}
 --- !u!212 &212000012996306226
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,24 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2371572aa3ff6f4b96037db044ff82e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8936e5e456c74ea41acf2096d6cc6234, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!251 &251000010280650344
-PlatformEffector2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012354331450}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1

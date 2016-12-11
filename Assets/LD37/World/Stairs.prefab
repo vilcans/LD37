@@ -20,10 +20,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012816008098}
   - 212: {fileID: 212000012996306226}
-  - 68: {fileID: 68000010782076264}
-  - 251: {fileID: 251000010280650344}
+  - 60: {fileID: 60000012154924764}
   m_Layer: 8
-  m_Name: ThreeThin1
+  m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,14 +35,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012354331450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.068, y: 21.763, z: 0}
+  m_LocalPosition: {x: -0.7723775, y: 21.37435, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!68 &68000010782076264
-EdgeCollider2D:
+--- !u!60 &60000012154924764
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -52,13 +51,20 @@ EdgeCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -0.6046374, y: 0.016170502}
-  - {x: -0.19195151, y: 0.056663513}
-  - {x: 0.32293546, y: 0.043100357}
-  - {x: 0.62943554, y: 0.058044434}
+    m_Paths:
+    - - {x: -0.0047926903, y: 0.35562325}
+      - {x: 0.29425937, y: 0.32761955}
+      - {x: 0.34523696, y: 0.6104183}
+      - {x: 0.6376128, y: 0.5611515}
+      - {x: 0.57915795, y: -0.5923481}
+      - {x: -0.64776146, y: -0.5218048}
+      - {x: -0.6104814, y: -0.15847015}
+      - {x: -0.30063617, y: -0.17402077}
+      - {x: -0.28875494, y: 0.09289169}
+      - {x: -0.02691096, y: 0.0819149}
 --- !u!212 &212000012996306226
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,24 +94,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2371572aa3ff6f4b96037db044ff82e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7001652b90114c746b060aa7854b26ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!251 &251000010280650344
-PlatformEffector2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012354331450}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
