@@ -134,9 +134,9 @@ public class Movement : MonoBehaviour {
             float t = deadTime - .5f;
             if(t >= 0) {
                 Vector3 newPosition = visibleBody.position;
-                newPosition.y -= t * 9.81f;
+                newPosition.y -= t * 20 * Time.deltaTime;
                 visibleBody.position = newPosition;
-                visibleBody.Rotate(0, 0, -190f * Time.deltaTime);
+                visibleBody.Rotate(0, 0, 100f * t * Time.deltaTime);
                 if(t > 3) {
                     SceneManager.LoadScene(0);
                 }
