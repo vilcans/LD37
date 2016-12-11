@@ -21,9 +21,8 @@ GameObject:
   - 4: {fileID: 4000012816008098}
   - 212: {fileID: 212000012996306226}
   - 68: {fileID: 68000010782076264}
-  - 251: {fileID: 251000010280650344}
   m_Layer: 8
-  m_Name: One2
+  m_Name: Slope2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012354331450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.4267545, y: 19.792404, z: 0}
+  m_LocalPosition: {x: 5.617902, y: 21.127949, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -55,8 +54,12 @@ EdgeCollider2D:
   m_UsedByEffector: 1
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -0.24711895, y: 0.24958801}
-  - {x: 0.24493074, y: 0.23080826}
+  - {x: -0.72963, y: -0.39330292}
+  - {x: -0.7577405, y: 0.49080086}
+  - {x: -0.44476604, y: 0.4552269}
+  - {x: -0.24966478, y: 0.31960297}
+  - {x: 0.31596088, y: -0.23454857}
+  - {x: 0.77501154, y: -0.3418522}
 --- !u!212 &212000012996306226
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -86,24 +89,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4fd8734b6b8862546b05d7a41f50f6fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec74076820c95e947b9ca201f7bc94d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!251 &251000010280650344
-PlatformEffector2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012354331450}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
