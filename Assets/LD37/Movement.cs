@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour {
 
     private const float movementForce = 5f / 2;
     private const float stepForce = 2.5f;
-    private const float jumpForce = 3f / 2;
+    private const float jumpForce = 1.6f;
 
     private float timeSinceJumpRequest = 0;
     private float timeSinceJump = 0;
