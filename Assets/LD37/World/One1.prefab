@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012816008098}
   - 212: {fileID: 212000012996306226}
-  - 60: {fileID: 60000010651666114}
   - 68: {fileID: 68000010782076264}
   - 251: {fileID: 251000010280650344}
   m_Layer: 8
@@ -43,24 +42,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &60000010651666114
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012354331450}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: -0.215807, y: 0.13554001}
-      - {x: 0.19458358, y: 0.17050076}
-      - {x: 0.19612464, y: 0.14319706}
-      - {x: -0.21198212, y: 0.11232185}
 --- !u!68 &68000010782076264
 EdgeCollider2D:
   m_ObjectHideFlags: 1
