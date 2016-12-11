@@ -85,7 +85,7 @@ public class Movement : MonoBehaviour {
             wantedRotation = accX > 0 ? 0 : -180;
         }
 
-        if(fallTime > 2) {
+        if(fallTime > 1.25f) {
             Kill();
         }
     }
