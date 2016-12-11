@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
@@ -25,10 +26,14 @@ public class Movement : MonoBehaviour {
     private const float offsetFromWall = -.2f;
     private float liftVelocity;
 
+    private Queue<AudioClip> playQueue;
+
     void Awake() {
         startPosition = transform.position;
         rigidbody = GetComponent<Rigidbody2D>();
         visibleBody = transform.Find("VisibleBody");
+
+        playQueue = new Queue<AudioClip>();
     }
 
     void FixedUpdate() {
@@ -92,7 +97,7 @@ public class Movement : MonoBehaviour {
             Debug.LogFormat("No audio clip set on {0}", trigger);
             return;
         }
-        audioSource.PlayOneShot(clip);
+        playQueue.Enqueue(clip);
     }
 
     void Update() {
@@ -104,5 +109,10 @@ public class Movement : MonoBehaviour {
         Vector3 newPosition = visibleBody.localPosition;
         newPosition.z = Mathf.SmoothDamp(newPosition.z, offsetFromWall - Mathf.Clamp(rigidbody.velocity.y, 0, 1) * .2f, ref liftVelocity, .2f);
         visibleBody.localPosition = newPosition;
+
+        if(playQueue.Count != 0 && !audioSource.isPlaying) {
+            AudioClip newClip = playQueue.Dequeue();
+            audioSource.PlayOneShot(newClip);
+        }
     }
 }
