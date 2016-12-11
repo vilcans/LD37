@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour {
 
@@ -28,6 +29,9 @@ public class Movement : MonoBehaviour {
 
     private Queue<AudioClip> playQueue;
 
+    private bool dead = false;
+    private float deadTime = 0;
+
     void Awake() {
         startPosition = transform.position;
         rigidbody = GetComponent<Rigidbody2D>();
@@ -37,6 +41,9 @@ public class Movement : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if(dead) {
+            return;
+        }
         if(grounded) {
             timeSinceGround = 0;
         }
@@ -73,6 +80,12 @@ public class Movement : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.CompareTag("Killer")) {
+            Kill();
+        }
+    }
+
     void OnCollisionStay2D(Collision2D collision) {
         //Debug.LogFormat("Collided with {0}, velocity {1}", collision.gameObject, collision.relativeVelocity);
         ContactPoint2D[] contacts = collision.contacts;
@@ -106,13 +119,36 @@ public class Movement : MonoBehaviour {
         currentRotation.y = Mathf.SmoothDampAngle(currentRotation.y, wantedRotation, ref rotationVelocity, rotationSmoothTime);
         visibleBody.localEulerAngles = currentRotation;
 
-        Vector3 newPosition = visibleBody.localPosition;
-        newPosition.z = Mathf.SmoothDamp(newPosition.z, offsetFromWall - Mathf.Clamp(rigidbody.velocity.y, 0, 1) * .2f, ref liftVelocity, .2f);
-        visibleBody.localPosition = newPosition;
-
-        if(playQueue.Count != 0 && !audioSource.isPlaying) {
-            AudioClip newClip = playQueue.Dequeue();
-            audioSource.PlayOneShot(newClip);
+        if(dead) {
+            deadTime += Time.deltaTime;
+            float t = deadTime - .5f;
+            if(t >= 0) {
+                Vector3 newPosition = visibleBody.position;
+                newPosition.y -= t * 9.81f;
+                visibleBody.position = newPosition;
+                visibleBody.Rotate(0, 0, -190f * Time.deltaTime);
+                if(t > 3) {
+                    SceneManager.LoadScene(0);
+                }
+            }
         }
+        else {
+            Vector3 newPosition = visibleBody.localPosition;
+            newPosition.z = Mathf.SmoothDamp(newPosition.z, offsetFromWall - Mathf.Clamp(rigidbody.velocity.y, 0, 1) * .2f, ref liftVelocity, .2f);
+            visibleBody.localPosition = newPosition;
+
+            if(playQueue.Count != 0 && !audioSource.isPlaying) {
+                AudioClip newClip = playQueue.Dequeue();
+                audioSource.PlayOneShot(newClip);
+            }
+        }
+    }
+
+    private void Kill() {
+        Debug.Log("I'm dead");
+        dead = true;
+        deadTime = 0;
+        visibleBody.transform.SetParent(null);
+        audioSource.Stop();
     }
 }
