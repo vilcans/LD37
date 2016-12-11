@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour {
@@ -29,14 +30,20 @@ public class Movement : MonoBehaviour {
 
     private Queue<AudioClip> playQueue;
 
+    private Transform endingCameraPose;
+
     private bool dead = false;
     private float deadTime = 0;
+    private bool finished = false;
+    private float finishTime = 0;
     private float fallTime;
 
     void Awake() {
         startPosition = transform.position;
         rigidbody = GetComponent<Rigidbody2D>();
         visibleBody = transform.Find("VisibleBody");
+        endingCameraPose = transform.Find("../EndingCameraPose");
+        Assert.IsNotNull(endingCameraPose);
 
         playQueue = new Queue<AudioClip>();
     }
@@ -118,9 +125,13 @@ public class Movement : MonoBehaviour {
         AudioClip clip = trigger.clip;
         if(clip == null) {
             Debug.LogFormat("No audio clip set on {0}", trigger);
-            return;
         }
-        playQueue.Enqueue(clip);
+        else {
+            playQueue.Enqueue(clip);
+        }
+        if(trigger.final) {
+            Finish();
+        }
     }
 
     void Update() {
@@ -142,24 +153,38 @@ public class Movement : MonoBehaviour {
                 }
             }
         }
+        else if(finished) {
+            if(finishTime < 3) {
+                finishTime += Time.deltaTime;
+                if(finishTime >= 3) {
+                    Camera.main.GetComponent<FollowAvatar>().MoveTo(endingCameraPose);
+                }
+            }
+            if(playQueue.Count == 0 && !audioSource.isPlaying) {
+                Kill();
+            }
+        }
         else {
             Vector3 newPosition = visibleBody.localPosition;
             newPosition.z = Mathf.SmoothDamp(newPosition.z, offsetFromWall - Mathf.Clamp(rigidbody.velocity.y, 0, 1) * .2f, ref liftVelocity, .2f);
             visibleBody.localPosition = newPosition;
-
-            if(playQueue.Count != 0 && !audioSource.isPlaying) {
-                AudioClip newClip = playQueue.Dequeue();
-                audioSource.PlayOneShot(newClip);
-            }
+        }
+        if(!dead && playQueue.Count != 0 && !audioSource.isPlaying) {
+            AudioClip newClip = playQueue.Dequeue();
+            audioSource.PlayOneShot(newClip);
         }
     }
 
     private void Kill() {
-        Debug.Log("I'm dead");
         dead = true;
         deadTime = 0;
         visibleBody.transform.SetParent(null);
         rigidbody.isKinematic = true;
         audioSource.Stop();
+    }
+
+    private void Finish() {
+        //Camera.main.GetComponent<FollowAvatar>().follow = false;
+        finished = true;
     }
 }

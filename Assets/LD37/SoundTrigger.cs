@@ -7,6 +7,7 @@ using UnityEngine;
 public class SoundTrigger : MonoBehaviour {
 
     public AudioClip clip;
+    public bool final;
 
     [NonSerialized]
     public bool played = false;
