@@ -63,8 +63,8 @@ public class Movement : MonoBehaviour {
         grounded = false;
 
         float velocityX = rigidbody.velocity.x;
-        if(Mathf.Abs(velocityX) > .04f) {
-            wantedRotation = velocityX > 0 ? 0 : -180;
+        if(Mathf.Abs(accX) > .02f) {
+            wantedRotation = accX > 0 ? 0 : -180;
         }
     }
 
