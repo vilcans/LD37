@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012816008098}
   - 212: {fileID: 212000012996306226}
-  - 60: {fileID: 60000012154924764}
+  - 60: {fileID: 60000010297078718}
   m_Layer: 8
-  m_Name: Stairs
+  m_Name: Blocker6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,13 +35,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012354331450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.79, y: 21.261, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.7035537, y: 14.7059, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &60000012154924764
+--- !u!60 &60000010297078718
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -55,16 +55,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -0.0047926903, y: 0.35562325}
-      - {x: 0.29425937, y: 0.32761955}
-      - {x: 0.34523696, y: 0.6104183}
-      - {x: 0.6376128, y: 0.5611515}
-      - {x: 0.57915795, y: -0.5923481}
-      - {x: -0.64776146, y: -0.5218048}
-      - {x: -0.6104814, y: -0.15847015}
-      - {x: -0.30063617, y: -0.17402077}
-      - {x: -0.28875494, y: 0.09289169}
-      - {x: -0.02691096, y: 0.0819149}
+    - - {x: 0.61134815, y: 0.3170643}
+      - {x: -0.636395, y: 0.1777649}
+      - {x: -0.59082174, y: -0.3212061}
+      - {x: 0.60860753, y: -0.22842121}
 --- !u!212 &212000012996306226
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -94,7 +88,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7001652b90114c746b060aa7854b26ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01c5ae9290a3cb949a80b96caeaf55d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
