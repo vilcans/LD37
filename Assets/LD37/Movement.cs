@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour {
         ContactPoint2D[] contacts = collision.contacts;
         for(int i = 0; i < contacts.Length; ++i) {
             //Debug.LogFormat("Contact {0} normal {1}", i, contacts[i].normal);
-            if(contacts[i].normal.y > 0) {
+            if(contacts[i].normal.y > 0.2f) {
                 grounded = true;
                 return;
             }
