@@ -149,6 +149,9 @@ public class Movement : MonoBehaviour {
                 newPosition.y -= t * 20 * Time.deltaTime;
                 visibleBody.position = newPosition;
                 visibleBody.Rotate(0, 0, 100f * t * Time.deltaTime);
+                if(t > 2) {
+                    Camera.main.GetComponent<Fading>().targetAlpha = 1;
+                }
                 if(t > 3) {
                     SceneManager.LoadScene(0);
                 }
