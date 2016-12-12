@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour {
 
     public AudioSource audioSource;
     public AudioClip[] deathSounds;
+    public AudioClip completeSound;
 
     private Transform visibleBody;
 
@@ -184,12 +185,18 @@ public class Movement : MonoBehaviour {
         deadTime = 0;
         visibleBody.transform.SetParent(null);
         rigidbody.isKinematic = true;
+
         audioSource.Stop();
-        if(!finished) {
-            AudioClip[] clips = deathSounds;
-            audioSource.clip = clips[Random.Range(0, clips.Length)];
-            audioSource.Play();
+        AudioClip clip;
+        if(finished) {
+            clip = completeSound;
         }
+        else {
+            AudioClip[] clips = deathSounds;
+            clip = clips[Random.Range(0, clips.Length)];
+        }
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
     private void Finish() {

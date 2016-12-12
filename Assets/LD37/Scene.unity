@@ -2591,6 +2591,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 79cf856f5bf3fe546a74d9e3b01c4fff, type: 3}
   - {fileID: 8300000, guid: 0f006edf330c8a445bf0591569dea784, type: 3}
   - {fileID: 8300000, guid: 37bf6defa5ebac04387cf23890138ce0, type: 3}
+  completeSound: {fileID: 8300000, guid: 62d7195c24fbb38448e883033a4e11c1, type: 3}
 --- !u!4 &477209986 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012816008098, guid: 5774b03be8bb7254182c1ed943ce61f9,
