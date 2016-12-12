@@ -2486,6 +2486,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2076791537}
+  deathSounds:
+  - {fileID: 8300000, guid: 91de50d0d4f666748aa8b039aeb7607d, type: 3}
+  - {fileID: 8300000, guid: 2be85ad0ffdfdb645a001fef2404b310, type: 3}
+  - {fileID: 8300000, guid: ec27d131b92943140a2147c0dcf6a751, type: 3}
+  - {fileID: 8300000, guid: c51135b2be17a6d4abeb54cfe175ea23, type: 3}
+  - {fileID: 8300000, guid: 5a2aba93b6ba49d4db0e147cade1e4cc, type: 3}
+  - {fileID: 8300000, guid: b044c3372f702e84ea4fc884d6e2dd30, type: 3}
+  - {fileID: 8300000, guid: 2a7e1758937ee86429e7504b3fbb4db5, type: 3}
+  - {fileID: 8300000, guid: 3c216f5846da9714b92d5f662674be46, type: 3}
+  - {fileID: 8300000, guid: 8dfbcbcac4d5af24fbd2e2c625cf3adb, type: 3}
+  - {fileID: 8300000, guid: 7e12a31cc36499940aa86e133464a758, type: 3}
+  - {fileID: 8300000, guid: f10a8c5dc1ecd884fb22ec272f664bed, type: 3}
+  - {fileID: 8300000, guid: 4c51aa6df67c12e4a946506818e3f8d0, type: 3}
+  - {fileID: 8300000, guid: 79cf856f5bf3fe546a74d9e3b01c4fff, type: 3}
+  - {fileID: 8300000, guid: 0f006edf330c8a445bf0591569dea784, type: 3}
+  - {fileID: 8300000, guid: 37bf6defa5ebac04387cf23890138ce0, type: 3}
 --- !u!4 &477209986 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012816008098, guid: 5774b03be8bb7254182c1ed943ce61f9,
