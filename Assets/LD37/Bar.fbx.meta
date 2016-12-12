@@ -1,26 +1,15 @@
 fileFormatVersion: 2
-guid: 8c62a9f587304d841986e130a05ae169
-timeCreated: 1481382430
-licenseType: Pro
+guid: b3e32e618ca8b634fa7484871e812bec
+timeCreated: 1481504471
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Camera
-    100004: Lamp
-    100006: Sun
-    100008: Walls
     400000: //RootNode
-    400002: Camera
-    400004: Lamp
-    400006: Sun
-    400008: Walls
     2300000: //RootNode
-    2300002: Walls
     3300000: //RootNode
-    3300002: Walls
-    4300000: Walls
-    4300002: Cylinder
+    4300000: Cylinder
   materials:
     importMaterials: 0
     materialName: 0
@@ -50,7 +39,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
