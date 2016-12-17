@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour {
     private const float stepForce = 2.5f;
     private const float jumpForce = 1.6f;
 
-    private float timeSinceJumpRequest = 0;
+    private float timeSinceJumpRequest = 100000;
     private float timeSinceJump = 0;
     private float timeSinceGround;
     private bool grounded;
@@ -59,12 +59,6 @@ public class Movement : MonoBehaviour {
         }
         else {
             timeSinceGround += Time.deltaTime;
-        }
-        if(Input.GetButtonDown("Jump")) {
-            timeSinceJumpRequest = 0;
-        }
-        else {
-            timeSinceJumpRequest += Time.deltaTime;
         }
 
         float accX = Input.GetAxis("Horizontal") * movementForce * Time.deltaTime;
@@ -141,6 +135,13 @@ public class Movement : MonoBehaviour {
         //Debug.LogFormat("currentRotation={0}", currentRotation);
         currentRotation.y = Mathf.SmoothDampAngle(currentRotation.y, wantedRotation, ref rotationVelocity, rotationSmoothTime);
         visibleBody.localEulerAngles = currentRotation;
+
+        if(Input.GetButtonDown("Jump")) {
+            timeSinceJumpRequest = 0;
+        }
+        else {
+            timeSinceJumpRequest += Time.deltaTime;
+        }
 
         if(dead) {
             deadTime += Time.deltaTime;
