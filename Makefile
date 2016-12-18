@@ -10,14 +10,14 @@ release: release-win release-mac release-linux
 release-web:
 	cp -r Build/web/* Build/release/
 
-release-win: $(RELEASE_DIR)/$(FILENAME)-win32.zip
+release-win: $(RELEASE_DIR)/$(FILENAME)-win.zip
 
-$(RELEASE_DIR)/$(FILENAME)-win32.zip:
+$(RELEASE_DIR)/$(FILENAME)-win.zip:
 	mkdir -p Build/release
 	rm -rf Build/ziptemp
 	mkdir -p Build/ziptemp
-	cp -r Build/win32 Build/ziptemp/$(FILENAME)
-	bash -c 'cd Build/ziptemp && zip -x .DS_Store -x '*.pdb' -r ../release/$(FILENAME)-win32.zip $(FILENAME)'
+	cp -r Build/win Build/ziptemp/$(FILENAME)
+	bash -c 'cd Build/ziptemp && zip -x .DS_Store -x '*.pdb' -r ../release/$(FILENAME)-win.zip $(FILENAME)'
 
 release-mac: $(RELEASE_DIR)/$(FILENAME).dmg
 
